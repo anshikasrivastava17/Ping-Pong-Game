@@ -31,7 +31,8 @@ var Ai = {
         return {
             width: 18,  //dimensions of bat
             height: 180,
-            x: side === 'left' ? 150 : this.canvas.width - 150,
+            //side is 'left' for left bat and its value is 150, otherwise right bat
+            x: side === 'left' ? 150 : this.canvas.width - 150, //poisition bat along x axis
             y: (this.canvas.height / 2) - 35,
             score: 0,
             move: DIRECTION.IDLE,

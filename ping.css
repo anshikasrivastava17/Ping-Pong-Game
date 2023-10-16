@@ -4,12 +4,10 @@
 body{
     font-family: 'Poppins', sans-serif; 
     text-align: center;
-    background-color: ghostwhite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    position: fixed;
-    width:100%;
+}
+
+#board {
+    background-color: black;
+    border-top: 5px solid skyblue;
+    border-bottom: 5px solid skyblue;
 }
