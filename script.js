@@ -67,6 +67,21 @@ var Game = {
     
     endGameMenu: function(){
         //Change canvas color font etc
+        Pong.context.font = '45px Courier New';
+        Pong.context.fillStyle = this.color;
+
+        //Draw rectangle behind 'Press any key to begin' text.
+        Pong.context.fillRect(
+            Pong.canvas.width/2 - 350,
+            Pong.canvas.height/2 - 48,
+            700,
+            100
+        );
         
+        //Change canvas color
+        Pong.context.fillStyle = '#ffffff';
+
+        //Draw end game menu text ('Game Over' and 'Winner')
+        Pong.context.fillText(text,)
     }
 }
