@@ -37,6 +37,8 @@ let ball = {            //ball object
     velocityY : 2   //moving up & down
 }
 
+let player1Score = 0;
+let player2Score = 0;
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -76,8 +78,34 @@ function update(){
     if (!outOfBounds(nextPlayer2Y)) {
         player2.y = nextPlayer2Y;
     }
-    context.fillRect(player2.x, player2.y, playerWidth, playerHeight);
     // player2.y += player2.velocityY;  
+    context.fillRect(player2.x, player2.y, playerWidth, playerHeight);
+    
+
+
+     // ball
+     context.fillStyle = "white";
+     ball.x += ball.velocityX;
+     ball.y += ball.velocityY;
+     context.fillRect(ball.x, ball.y, ballWidth, ballHeight);
+
+     if (ball.y <= 0 || (ball.y + ballHeight >= boardHeight)) {  // if ball touches top or bottom of canvas
+        ball.velocityY *= -1; //reverse Y direction
+    }
+
+
+        //bounce the ball back
+        if (detectCollision(ball, player1)) {
+            if (ball.x <= player1.x + player1.width) { //left side of ball touches right side of player 1 (left paddle)
+                ball.velocityX *= -1;   // flip x direction
+            }
+        }
+        else if (detectCollision(ball, player2)) {
+            if (ball.x + ballWidth >= player2.x) { //right side of ball touches left side of player 2 (right paddle)
+                ball.velocityX *= -1;   // flip x direction
+            }
+        }
+    
     
 }
 
@@ -104,4 +132,13 @@ function movePlayer(e) {
     else if (e.code == "ArrowDown") {
         player2.velocityY = 3;
     }
+}
+
+
+function detectCollision(a, b) { //ball hits any of the paddle
+    //intersection of 2 rectangles
+    return a.x < b.x + b.width &&   //a's top left corner doesn't reach b's top right corner
+           a.x + a.width > b.x &&   //a's top right corner passes b's top left corner 
+           a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
+           a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
