@@ -104,9 +104,18 @@ function update(){
             if (ball.x + ballWidth >= player2.x) { //right side of ball touches left side of player 2 (right paddle)
                 ball.velocityX *= -1;   // flip x direction
             }
-        }
-    
-    
+        } 
+
+         //game over
+        if (ball.x < 0) { //x position is past left side of canvas, meaning player 2 hit
+            player2Score++;
+            resetGame(1);
+          }
+        else if (ball.x + ballWidth > boardWidth) {   //right side of ball passes board width
+            player1Score++;
+            resetGame(-1);
+    }
+
 }
 
 function outOfBounds(yPosition) {  //func to check bounds so paddle doesnt cross the screen
