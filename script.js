@@ -121,7 +121,14 @@ function update(){
     context.fillText(player1Score, boardWidth/5, 45);  //x coordinate is 1/5th , y coordinate 45
     context.fillText(player2Score, boardWidth*4/5 - 45, 45);  //x coordinate 4/5th and -45 to set it from right
 
+
+    // draw dotted line down the middle for visuals
+    for (let i = 10; i < board.height; i += 25) { //i = starting y Position, draw a square every 25 pixels down
+        // (x position = half of boardWidth (middle) - 10), i = y position, width = 5, height = 5
+        context.fillRect(board.width / 2 - 10, i, 5, 5);   
+    }
 }
+
 
 function outOfBounds(yPosition) {  //func to check bounds so paddle doesnt cross the screen
     //returns true or false
