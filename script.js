@@ -116,6 +116,11 @@ function update(){
             resetGame(-1);
     }
 
+    //score
+    context.font = "45px sans-serif";
+    context.fillText(player1Score, boardWidth/5, 45);  //x coordinate is 1/5th , y coordinate 45
+    context.fillText(player2Score, boardWidth*4/5 - 45, 45);  //x coordinate 4/5th and -45 to set it from right
+
 }
 
 function outOfBounds(yPosition) {  //func to check bounds so paddle doesnt cross the screen
@@ -150,4 +155,15 @@ function detectCollision(a, b) { //ball hits any of the paddle
            a.x + a.width > b.x &&   //a's top right corner passes b's top left corner 
            a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
+}
+
+function resetGame(direction) {  //update socring
+    ball = {  //updating ball object
+        x : boardWidth/2,
+        y : boardHeight/2,
+        width: ballWidth,
+        height: ballHeight,
+        velocityX : direction,
+        velocityY : 2
+    }
 }
