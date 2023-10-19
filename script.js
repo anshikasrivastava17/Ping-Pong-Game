@@ -9,6 +9,8 @@ let playerWidth = 10;
 let playerHeight = 50;
 let playerVelocityY = 0;  //to make bats move up nd down; only velocityY needed bcoz paddle can go up nd down
 
+//enter player details
+
 let player1 = {  //object
     x : 10,
     y : boardHeight/2,
