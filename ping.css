@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,500&display=swap');
 
-
 body{
     font-family: 'Poppins', sans-serif; 
     text-align: center;
@@ -28,4 +27,20 @@ body{
     border: 2px solid black;
     padding: 5px;
     box-shadow: 5px 10px rgb(90, 145, 99);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between buttons */
+    height: 50px; width:450px;
+    /* border-radius: 7px; */
+    position: absolute;
+    top: 80%; left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+#startButton{
+    background-color: green ;
+    /* position: absolute;
+    bottom: 50px; */
 }

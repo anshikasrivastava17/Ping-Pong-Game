@@ -12,8 +12,6 @@ let playerVelocityY = 0;  //to make bats move up nd down; only velocityY needed 
 let p1Name = ""; //for names of Player 1 and 2
 let p2Name = "";
 
-
-
 let player1 = {  //object
     x : 10,
     y : boardHeight/2,
@@ -45,6 +43,7 @@ let ball = {            //ball object
 let player1Score = 0;
 let player2Score = 0;
 
+
 window.onload = function() {
     if (!p1Name && !p2Name) { //names of Players
         p1Name = prompt("Enter name of first player:", "Player1");
@@ -52,6 +51,12 @@ window.onload = function() {
         p1.innerHTML = "Challenger 1 ~ <strong>" + p1Name + "</strong>";
         p2.innerHTML = "Challenger 2 ~ <strong>" + p2Name + "</strong>";
     }
+
+    if (p1Name && p2Name) {
+        document.getElementsByClassName("button-container")[0].style.display = "block"; // Display buttons
+        document.getElementById("startButton").addEventListener("click", startGame);
+    }
+    
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -61,9 +66,14 @@ window.onload = function() {
      context.fillStyle="skyblue";  //fill color of bat as blue
      context.fillRect(player1.x, player1.y, playerWidth, playerHeight); //FOR PLAYER 1 only : make the bat as a rect
      // x y coordinates for position and dimensions for height width of bat
+     context.fillRect(player2.x, player2.y, playerWidth, playerHeight); //FOR PLAYER 2
 
-     requestAnimationFrame(update); //func to update positions of bat, when it goes up y coordinates - and vice versa
+      //func to update positions of bat, when it goes up y coordinates - and vice versa
      document.addEventListener("keyup", movePlayer);
+}
+
+function startGame(){
+    requestAnimationFrame(update);
 }
 
 function update(){
