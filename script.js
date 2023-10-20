@@ -28,6 +28,8 @@ let player2 = {
     velocityY : 0
 }
 
+let isGamePaused = false;
+
 //ball
 let ballWidth = 10;
 let ballHeight = 10;
@@ -76,7 +78,31 @@ function startGame(){
     requestAnimationFrame(update);
 }
 
+document.getElementById("pauseButton").addEventListener("click", pauseGame);
+
+function pauseGame() {
+    if (isGamePaused) {
+        resume();
+    } else {
+        pause();
+    }
+}
+
+function pause() {
+    isGamePaused = true;
+    document.getElementById("pauseButton").textContent = "Resume";
+    cancelAnimationFrame(update); // Stop the game loop.
+}
+
+function resume() {
+    isGamePaused = false;
+    document.getElementById("pauseButton").textContent = "Pause";
+    update(); // Resume the game by calling the update function.
+}
+
+
 function update(){
+    if(!isGamePaused)
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
     //player1
