@@ -11,3 +11,21 @@ body{
     border-top: 5px solid skyblue;
     border-bottom: 5px solid skyblue;
 }
+
+#p1{ /* 1st player name */
+    position: absolute;
+    left:100px;
+    top: 30px;
+    border: 2px solid black;
+    padding: 5px;
+    box-shadow: 5px 10px rgb(192, 104, 104);
+}
+
+#p2{ /* 2nd player name */
+    position: absolute;
+    right:100px;
+    top: 30px;
+    border: 2px solid black;
+    padding: 5px;
+    box-shadow: 5px 10px rgb(90, 145, 99);
+}

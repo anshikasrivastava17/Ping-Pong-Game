@@ -9,6 +9,11 @@ let playerWidth = 10;
 let playerHeight = 50;
 let playerVelocityY = 0;  //to make bats move up nd down; only velocityY needed bcoz paddle can go up nd down
 
+let p1Name = ""; //for names of Player 1 and 2
+let p2Name = "";
+
+
+
 let player1 = {  //object
     x : 10,
     y : boardHeight/2,
@@ -41,6 +46,12 @@ let player1Score = 0;
 let player2Score = 0;
 
 window.onload = function() {
+    if (!p1Name && !p2Name) { //names of Players
+        p1Name = prompt("Enter name of first player:", "Player1");
+        p2Name = prompt("Enter name of second player:", "Player2");
+        p1.innerHTML = "Challenger 1 ~ <strong>" + p1Name + "</strong>";
+        p2.innerHTML = "Challenger 2 ~ <strong>" + p2Name + "</strong>";
+    }
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -138,6 +149,8 @@ function outOfBounds(yPosition) {  //func to check bounds so paddle doesnt cross
 
 function movePlayer(e) {
     //player1
+    
+
     if (e.code == "KeyW") {  //up means y coordinate decreasing for a board that starts from 0/1
         player1.velocityY = -3;
     }
