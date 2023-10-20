@@ -79,7 +79,6 @@ function startGame(){
 }
 
 document.getElementById("pauseButton").addEventListener("click", pauseGame);
-
 function pauseGame() {
     if (isGamePaused) {
         resume();
@@ -98,6 +97,16 @@ function resume() {
     isGamePaused = false;
     document.getElementById("pauseButton").textContent = "Pause";
     update(); // Resume the game by calling the update function.
+}
+
+document.getElementById("restartButton").addEventListener("click", restartGame);
+function restartGame() {
+    player1Score = 0;
+    player2Score = 0;
+    player1.y = boardHeight / 2;
+    player2.y = boardHeight / 2;
+    resetGame(1); // Pass the direction for ball movement after restarting.
+    update(); // Restart the game by calling the update function.
 }
 
 
