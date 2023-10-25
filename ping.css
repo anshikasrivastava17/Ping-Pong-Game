@@ -3,12 +3,16 @@
 body{
     font-family: 'Poppins', sans-serif; 
     text-align: center;
+    background: #333333; 
+    color: white; 
 }
 
 #board {
-    background-color: black;
-    border-top: 5px solid skyblue;
-    border-bottom: 5px solid skyblue;
+    background-color: #87ceeb; /* Default background color */
+    background-image: url('grass3.jpg');
+    
+    border-top: 5px solid white;
+    border-bottom: 5px solid white;
 }
 
 #p1{ /* 1st player name */
@@ -17,7 +21,7 @@ body{
     top: 30px;
     border: 2px solid black;
     padding: 5px;
-    box-shadow: 5px 10px rgb(192, 104, 104);
+    box-shadow: 5px 10px #139f6c;
 }
 
 #p2{ /* 2nd player name */
@@ -26,25 +30,31 @@ body{
     top: 30px;
     border: 2px solid black;
     padding: 5px;
-    box-shadow: 5px 10px rgb(143, 90, 145);
+    box-shadow: 5px 10px #139f6c;
 }
 
 .button-container {
     display: flex;
     justify-content: space-between; /* Distribute space between buttons */
-    height: 50px; width:500px;
-    /* border-radius: 7px; */
+    height: 50px; width:600px;
     position: absolute;
-    top: 80%; left: 50%; 
+    top: 90%; left: 50%; 
     transform: translate(-50%, -50%);
 }
 
 .button-container button{
-    background-color: rgb(69, 200, 69) ;
+    background-color:#139f6c;
     color: white;
     padding: 12px; margin:10px;
     border:0.5px solid black;
     border-radius: 4px;
+    width:100px;
     /* position: absolute;
     bottom: 50px; */
+}
+.resultMessage{
+    display:flex;
+    justify-content: center;
+    height:20px;
+    width: 20px;
 }
