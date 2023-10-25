@@ -1,5 +1,7 @@
 //board
 let board;
+
+
 let boardWidth = 500;
 let boardHeight = 500;
 let context; 
@@ -33,14 +35,18 @@ let isGamePaused = false;
 //ball
 let ballWidth = 10;
 let ballHeight = 10;
-let ball = {            //ball object
-    x : boardWidth/2,  //to centre it horizontally nd vertically
-    y : boardHeight/2,
-    width: ballWidth,
-    height: ballHeight,
-    velocityX : 1,  //moving left & right
-    velocityY : 2   //moving up & down
-}
+
+
+let ball = {
+    x: boardWidth / 2, // Center it horizontally
+    y: boardHeight / 2, // Center it vertically
+    
+    velocityX: 1,
+    velocityY: 2
+};
+
+
+
 
 let player1Score = 0;
 let player2Score = 0;
@@ -65,7 +71,7 @@ window.onload = function() {
     context = board.getContext("2d"); //used for drawing on the board
 
      //draw initial player1
-     context.fillStyle="skyblue";  //fill color of bat as blue
+     context.fillStyle="white";  //fill color of bat as blue
      context.fillRect(player1.x, player1.y, playerWidth, playerHeight); //FOR PLAYER 1 only : make the bat as a rect
      // x y coordinates for position and dimensions for height width of bat
      context.fillRect(player2.x, player2.y, playerWidth, playerHeight); //FOR PLAYER 2
@@ -108,6 +114,29 @@ function restartGame() {
     resetGame(1); // Pass the direction for ball movement after restarting.
     update(); // Restart the game by calling the update function.
 }
+document.getElementById("endButton").addEventListener("click", endGame);
+
+function endGame() {
+    let winner;
+    if (player1Score > player2Score) {
+        winner = p1Name;
+    } else {
+        winner = p2Name;
+    }
+    
+    // Pause the game
+    pause();
+    
+    // Reset the game state
+    resetGame(1);
+    
+    // Display the winner's name on the webpage
+    let resultMessage = document.getElementById("resultMessage");
+    resultMessage.textContent = `Winner: ${winner}`;
+    resultMessage.style.display = "block"; // Show the result message
+}
+
+
 
 
 function update(){
@@ -115,7 +144,7 @@ function update(){
     requestAnimationFrame(update);
     context.clearRect(0, 0, board.width, board.height);
     //player1
-    context.fillStyle="skyblue";  //fill color of bat as blue
+    context.fillStyle="white";  //fill color of bat as blue
 
     //  player1.y += player1.velocityY;
     //not doing this bcoz it stretches it across the screen without clearing canvas; 
@@ -140,10 +169,12 @@ function update(){
 
 
      // ball
+     context.beginPath(); // Begin the path for drawing the circle
+
      context.fillStyle = "white";
-     ball.x += ball.velocityX;
-     ball.y += ball.velocityY;
-     context.fillRect(ball.x, ball.y, ballWidth, ballHeight);
+    ball.x += ball.velocityX;
+    ball.y += ball.velocityY;
+    context.fillRect(ball.x, ball.y, ballWidth, ballHeight);
 
      if (ball.y <= 0 || (ball.y + ballHeight >= boardHeight)) {  // if ball touches top or bottom of canvas
         ball.velocityY *= -1; //reverse Y direction
@@ -222,7 +253,7 @@ function detectCollision(a, b) { //ball hits any of the paddle
            a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
 }
 
-function resetGame(direction) {  //update socring
+function resetGame(direction) {  //update scoring
     ball = {  //updating ball object
         x : boardWidth/2,
         y : boardHeight/2,
