@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ping.css">
+    <link rel="stylesheet" href="pong.css">
     <title>Pong Game</title>
     
 </head>
 <body>
+    <p><b>PONG</b></p>
    <canvas id="board"></canvas>
    <!-- <h1> Pong Game </h1> -->
    <div id="p1"></div>
@@ -17,7 +18,10 @@
      <button id="startButton">Start</button>
      <button id="pauseButton">Pause</button>
      <button id="restartButton">Restart</button>
+     <button id="endButton">End</button>
     </div>
-   <script src="script.js"></script> 
+   <div id="resultMessage" style="display: none;"></div>
+
+   <script src="pong.js"></script> 
 </body>
 </html>
